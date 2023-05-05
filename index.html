@@ -6,13 +6,28 @@
 
     <title>Sketch</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="stylesheet" type="text/css" href="base.css">
+   
     <script src="libraries/p5.js"></script>
-    <script src="libraries/p5.sound.js"></script>
+    <!-- <script src="libraries/p5.sound.js"></script> -->
   </head>
 
   <body>
-    <script src="sketch.js"></script>
+    <main>
+      <h1>Physics Model</h1>
+      <section id="main-game">
+
+        <div id="canvas-div"></div>
+        <div id="form-div">
+          <form >
+            <input type="range" min="0" max="100" value="20">
+          </form>
+        </div>
+      </section>
+      </main>
+      <script  src="utility/utility.constant.js"></script>
+      <script  src="utility/utility.function.js"></script>
+
+      <script src="sketch.js"></script>
   </body>
 </html>

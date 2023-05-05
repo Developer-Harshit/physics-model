@@ -1,7 +1,18 @@
+var cnv
+var scaleCanvas
+
 function setup() {
-  createCanvas(400, 400);
+  cnv = createCanvas(scaleCanvas * dim, scaleCanvas * dim);
+  background(bgc);
+  changeDim()
+  cnv.parent('canvas-div')
+}
+function windowResized() {
+  changeDim()
+
 }
 
+
 function draw() {
-  background(220);
+  background(bgc);
 }
