@@ -1,5 +1,5 @@
 var cnv
-var scaleCanvas
+
 
 function setup() {
   cnv = createCanvas(scaleCanvas * dim, scaleCanvas * dim);

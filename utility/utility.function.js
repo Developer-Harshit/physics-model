@@ -1,4 +1,4 @@
-
+var scaleCanvas
 function changeDim() {
     if (innerWidth < innerHeight) {
         scaleCanvas = Math.floor(innerWidth / dim) - 2
