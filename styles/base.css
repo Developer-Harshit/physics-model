@@ -1,6 +1,7 @@
 :root {
-  overflow-x: hidden;
   font-family: Calibri, sans-serif;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 html,
@@ -17,7 +18,7 @@ canvas {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: -webkit-fill-available;
   width: 100vw;
   background-color: #212121;
 
@@ -44,6 +45,10 @@ canvas {
 
 }
 
+#slider-ol {
+  display: flex;
+}
+
 /* For Desktops */
 @media (min-width: 48rem) {
   #canvas-div {
@@ -53,6 +58,10 @@ canvas {
   #main-game {
     flex-direction: row;
 
+  }
+
+  #slider-ol {
+    flex-direction: column;
   }
 
 }
@@ -65,3 +74,9 @@ canvas {
 
 /* For Mobile */
 @media (max-width: 30rem) {}
+
+@media (max-width: 20rem) {
+  #slider-ol {
+    flex-direction: column;
+  }
+}

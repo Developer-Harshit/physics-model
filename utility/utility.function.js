@@ -9,3 +9,5 @@ function changeDim() {
     resizeCanvas(scaleCanvas * dim, scaleCanvas * dim)
 }
 
+
+
