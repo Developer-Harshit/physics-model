@@ -47,6 +47,7 @@ canvas {
 
 #slider-ol {
   display: flex;
+  padding: 1rem;
 }
 
 /* For Desktops */

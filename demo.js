@@ -1,29 +1,36 @@
 var cnv
 const mySliders = []
-function setSliders() {
-    velX = new Slider('Velocity-x', 'slider-ol')
-    velY = new Slider('Velocity-y', 'slider-ol')
+const particles = []
 
-    velX.addSlider(0, 100, 50)
-    velY.addSlider(0, 100, 50)
+function configParticles() {
+    p = new Particle()
+    particles.push(p)
 
-    mySliders.push({ velX: velX.element })
-    mySliders.push({ velY: velY.element })
 }
 function setup() {
-    cnv = createCanvas(scaleCanvas * dim, scaleCanvas * dim);
+    cnv = createCanvas(10, 10);
     background(bgc);
+
+    setSliders()
     changeDim()
     cnv.parent('canvas-div')
-    setSliders()
+
+    configParticles()
 
 }
 function windowResized() {
     changeDim()
-
 }
-
-
 function draw() {
     background(bgc);
+    for (p of particles) {
+        p.draw()
+        p.velx = mySliders.velx.value()
+        p.vely = mySliders.vely.value()
+        p.accx = mySliders.accx.value() / p.mass
+        p.accy = mySliders.accy.value() / p.mass
+
+        p.update()
+    }
+
 }

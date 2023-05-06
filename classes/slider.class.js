@@ -11,7 +11,9 @@ class Slider {
 
         this.element = createSlider(min, max, value, step)
         const p = createP(this.name)
-        this.parentList.child(this.element)
+
+        this.element.parent(this.parentList)
+        // this.parentList.child(this.element)
         this.parentList.child(p)
 
     }
