@@ -1,0 +1,90 @@
+---------------------------------------------------base.css
+:root {
+  font-family: Calibri, sans-serif;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+  width: 500px;
+  height: 500px;
+}
+
+#main-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: -webkit-fill-available;
+  width: 100vw;
+  background-color: #212121;
+
+
+}
+
+#canvas-div {
+
+  display: flex;
+  justify-content: center;
+
+}
+
+#main-game {
+  color: antiquewhite;
+}
+
+#form-div {
+  width: -webkit-fill-available;
+}
+
+#form-div li {
+  list-style: none;
+
+}
+
+#slider-ol {
+  display: flex;
+  padding: 1rem;
+}
+
+
+-----------------------------------------------------------mobile.css
+/* For Desktops */
+@media (min-width: 48rem) {
+    #canvas-div {
+        justify-content: flex-start;
+    }
+
+    #main-game {
+        flex-direction: row;
+
+    }
+
+    #slider-ol {
+        flex-direction: column;
+    }
+
+}
+
+
+
+/* For Tabs and Desktop */
+@media (min-width: 30rem) {}
+
+/* For Tabs and Mobile  */
+@media (max-width: 48rem) {}
+
+/* For Mobile */
+@media (max-width: 30rem) {}
+
+@media (max-width: 20rem) {
+    #slider-ol {
+        flex-direction: column;
+    }
+}
