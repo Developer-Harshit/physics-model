@@ -49,35 +49,3 @@ canvas {
   display: flex;
   padding: 1rem;
 }
-
-/* For Desktops */
-@media (min-width: 48rem) {
-  #canvas-div {
-    justify-content: flex-start;
-  }
-
-  #main-game {
-    flex-direction: row;
-
-  }
-
-  #slider-ol {
-    flex-direction: column;
-  }
-
-}
-
-/* For Tabs and Desktop */
-@media (min-width: 30rem) {}
-
-/* For Tabs and Mobile  */
-@media (max-width: 48rem) {}
-
-/* For Mobile */
-@media (max-width: 30rem) {}
-
-@media (max-width: 20rem) {
-  #slider-ol {
-    flex-direction: column;
-  }
-}
