@@ -1,0 +1,107 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a0e16;
+    color: white;
+}
+
+header {
+    height: 5rem;
+    background-color: #1b071f;
+
+}
+
+#form-div {
+
+    background-color: #892be249;
+    color: antiquewhite;
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
+}
+
+#form-div ol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+}
+
+#canvas-div {
+    padding: 5rem 0px;
+    /* margin: auto; */
+    text-align: -webkit-center;
+}
+
+.box {
+    position: sticky;
+
+}
+
+footer {
+    height: 200rem;
+    background-color: #0d080e;
+
+}
+
+
+
+
+
+#main-game {
+
+    width: 100vw;
+    background-color: #0b050d;
+
+
+}
+
+
+
+
+
+#form-div li {
+    list-style: none;
+
+}
+
+
+/* For Desktops */
+@media (min-width: 48rem) {
+    #canvas-div {
+        justify-content: flex-start;
+    }
+
+    #main-game {
+        flex-direction: row;
+
+    }
+
+    #slider-ol {
+        flex-direction: column;
+    }
+
+}
+
+
+
+/* For Tabs and Desktop */
+@media (min-width: 30rem) {}
+
+/* For Tabs and Mobile  */
+@media (max-width: 48rem) {}
+
+/* For Mobile */
+@media (max-width: 30rem) {}
+
+@media (max-width: 20rem) {
+    #slider-ol {
+        flex-direction: column;
+    }
+}
