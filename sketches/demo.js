@@ -20,6 +20,7 @@ function setup() {
 }
 function windowResized() {
     changeDim()
+
 }
 function draw() {
     background(bgc);
