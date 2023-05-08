@@ -1,10 +1,10 @@
 var cnv
 const mySliders = []
 const particles = []
+var p
 
 function configParticles() {
     p = new Particle()
-    particles.push(p)
 
 }
 function setup() {
@@ -17,21 +17,42 @@ function setup() {
 
     configParticles()
 
+    mySliders.velx.input(function () {
+        p.velx = mySliders.velx.value()
+
+    })
+    mySliders.vely.input(function () {
+        p.vely = mySliders.vely.value()
+
+    })
+    mySliders.accx.input(function () {
+        p.accx = mySliders.accx.value()
+
+    })
+    mySliders.accy.input(function () {
+        p.accy = mySliders.accy.value()
+
+    })
+
+
 }
 function windowResized() {
     changeDim()
+    p.fixResize(scaleCanvas, pScale)
+
+
 
 }
+
+
 function draw() {
     background(bgc);
-    for (p of particles) {
-        p.draw()
-        p.velx = mySliders.velx.value()
-        p.vely = mySliders.vely.value()
-        p.accx = mySliders.accx.value() / p.mass
-        p.accy = mySliders.accy.value() / p.mass
+    p.draw()
 
-        p.update()
-    }
+    p.accx = mySliders.accx.value() / p.mass
+    p.accy = mySliders.accy.value() / p.mass
+    p.wallCollide()
+
+    p.update()
 
 }
