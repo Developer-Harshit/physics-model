@@ -3,7 +3,7 @@ const mySliders = []
 const particles = []
 
 function configParticles() {
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 3; i++) {
         particles.push(new Particle())
     }
 
@@ -32,11 +32,26 @@ function windowResized() {
 
 function draw() {
     background(bgc);
-    for (const p of particles) {
+
+    for (let i = 0; i < particles.length; i++) {
+        // for (const p of particles) {
+        const p = particles[i]
         p.draw()
 
         p.update()
         p.wallCollide('Border')
+        for (let j = i + 1; j < particles.length; j++) {
+            const other = particles[j]
+            if (other == p) {
+                break
+            }
+            p.circleCollision(other)
+
+        }
+
+
+        p.applyFriction()
+        // p.applyGravity()
     }
 
 }

@@ -13,12 +13,15 @@ Particle.prototype.fixResize = function (winScale, prevScale) {
 Particle.prototype.isAboveFloor = function () {
     return abs(this.y + this.radius - height) > 1
 }
+
 Particle.prototype.findDistance = function (other) {
     const xDist = this.x - other.x
-    const yDist = this.x - other.x
+    const yDist = this.y - other.y
     const myDist = ((xDist ** 2) + (yDist ** 2)) ** (0.5)
+
     return myDist
 }
+
 Particle.prototype.noborderCollide = function () {
     var result = false
     if (this.x < 0 - this.buffer) {
@@ -38,12 +41,13 @@ Particle.prototype.noborderCollide = function () {
     return result
 }
 Particle.prototype.borderCollide = function () {
+
     var result = false
-    // print('Starting:', result)
     if (this.velx <= 0 && this.x - this.radius <= 0) {
 
         this.velx *= - this.cRest
-        this.x = 0
+
+        this.x = 0 + this.radius
         result = true
 
 
@@ -62,7 +66,7 @@ Particle.prototype.borderCollide = function () {
         result = true
     } else if (this.vely <= 0 && this.y - this.radius <= 0) {
         this.vely *= -this.cRest
-        this.y = 0 - this.radius
+        this.y = 0 + this.radius
 
         result = true
 

@@ -1,5 +1,5 @@
 class Particle {
-    constructor(vx = random(-10, 10), vy = random(-10, 10), radius = 5) {
+    constructor(vx = random(-5, 5), vy = random(-5, 5), radius = random(5, 8)) {
         this.x = random(0, width)
         this.y = random(0, height)
 
@@ -16,19 +16,18 @@ class Particle {
 
         this.radius = radius
 
-        this.cRest = random(0.05, 0.65)
+        this.cRest = 1//random(0.05, 0.65)
         this.friction = 0.01
 
+        this.color = { x: random(0, 255), y: random(0, 255), z: random(0, 255) }
 
     }
     draw() {
-        fill(240)
+        fill(this.color.x, this.color.y, this.color.z)
         ellipse(this.x, this.y, this.radius * 2)
     }
     update() {
-        this.applyFriction()
 
-        this.applyGravity()
         this.velx += this.accx
         this.vely += this.accy
 
@@ -61,7 +60,23 @@ class Particle {
 
 
     }
-    isColliding() {
+    circleCollision(other) {
+        const distR = this.findDistance(other)
+
+        if (distR <= this.radius + other.radius) {
+            console.log(distR)
+            const netMass = this.radius + other.radius
+            const massDiff = this.radius - other.radius
+            const prevX = this.velx
+            const prevY = this.vely
+
+            this.velx = (this.velx * (massDiff) + (2 * other.velx * other.radius)) / netMass
+            this.vely = (this.vely * (massDiff) + (2 * other.vely * other.radius)) / netMass
+
+            other.velx = ((2 * prevX * this.radius) - other.velx * (massDiff)) / netMass
+            other.vely = ((2 * prevY * this.radius) - other.vely * (massDiff)) / netMass
+
+        }
 
     }
 
