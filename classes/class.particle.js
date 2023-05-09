@@ -1,9 +1,9 @@
 class Particle {
-    constructor(vx = random(-5, 5), vy = random(-5, 5), radius = random(5, 8)) {
+    constructor(vx = random(-5, 5), vy = random(-5, 5), radius = random(5, 12)) {
         this.x = random(0, width)
         this.y = random(0, height)
 
-        this.buffer = 10
+        this.buffer = 0.3
 
         this.velx = vx
         this.vely = vy
@@ -16,7 +16,7 @@ class Particle {
 
         this.radius = radius
 
-        this.cRest = 1//random(0.05, 0.65)
+        this.cRest = random(0.05, 0.65)
         this.friction = 0.01
 
         this.color = { x: random(0, 255), y: random(0, 255), z: random(0, 255) }
@@ -34,22 +34,24 @@ class Particle {
         this.x += this.velx
         this.y += this.vely
 
-        if (abs(this.vely) < 0.5) {
+        if (abs(this.vely) < 0.3) {
             this.vely = 0
         }
 
-        if (abs(this.velx) < 0.5) {
+        if (abs(this.velx) < 0.3) {
             this.velx = 0
         }
     }
 
     applyFriction() {
-        if (!this.isAboveFloor() && !(this.velx == 0)) {
+        if ((!this.isAboveFloor()) && !(this.velx == 0)) {
 
             const sign = abs(this.velx) / this.velx
             if (sign) {
-                this.velx -= sign * this.friction * this.radius * gravity
+                this.velx -= sign * this.friction * gravity
             }
+
+
         }
     }
     applyGravity() {
@@ -60,11 +62,12 @@ class Particle {
 
 
     }
+
     circleCollision(other) {
+        //Requies iterating logN times
         const distR = this.findDistance(other)
 
-        if (distR <= this.radius + other.radius) {
-            console.log(distR)
+        if (distR <= this.radius + other.radius + this.buffer + this.buffer) {
             const netMass = this.radius + other.radius
             const massDiff = this.radius - other.radius
             const prevX = this.velx
@@ -76,11 +79,13 @@ class Particle {
             other.velx = ((2 * prevX * this.radius) - other.velx * (massDiff)) / netMass
             other.vely = ((2 * prevY * this.radius) - other.vely * (massDiff)) / netMass
 
+            return true
+
         }
 
     }
 
-    border() { }
+
     wallCollide(nature = 'Border') {
         var collidingWall = false
         if (nature == 'noBorder') {

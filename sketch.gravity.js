@@ -34,12 +34,11 @@ function draw() {
     background(bgc);
 
     for (let i = 0; i < particles.length; i++) {
-        // for (const p of particles) {
         const p = particles[i]
         p.draw()
 
-        p.update()
-        p.wallCollide('Border')
+        p.applyFriction()
+        p.applyGravity()
         for (let j = i + 1; j < particles.length; j++) {
             const other = particles[j]
             if (other == p) {
@@ -47,11 +46,12 @@ function draw() {
             }
             p.circleCollision(other)
 
+
         }
+        p.update()
+        p.wallCollide('Border')
 
 
-        p.applyFriction()
-        // p.applyGravity()
     }
 
 }
