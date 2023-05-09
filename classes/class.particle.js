@@ -1,5 +1,5 @@
 class Particle {
-    constructor(vx = random(-5, 5), vy = random(-5, 5), radius = 5) {
+    constructor(vx = random(-10, 10), vy = random(-10, 10), radius = 5) {
         this.x = random(0, width)
         this.y = random(0, height)
 
@@ -16,26 +16,50 @@ class Particle {
 
         this.radius = radius
 
-        this.cRest = 0.999
+        this.cRest = random(0.05, 0.65)
+        this.friction = 0.01
+
+        print(this.velx)
     }
     draw() {
         fill(240)
         ellipse(this.x, this.y, this.radius * 2)
     }
     update() {
+        this.applyFriction()
+
         this.applyGravity()
         this.velx += this.accx
         this.vely += this.accy
+
         this.x += this.velx
         this.y += this.vely
+
+        if (abs(this.vely) < 0.5) {
+            this.vely = 0
+        }
+
+        if (abs(this.velx) < 0.5) {
+            this.velx = 0
+        }
+    }
+
+    applyFriction() {
+        if (!this.isAboveFloor() && !(this.velx == 0)) {
+
+            const sign = abs(this.velx) / this.velx
+            if (sign) {
+                this.velx -= sign * this.friction * this.radius * 0.98
+            }
+        }
     }
     applyGravity() {
         if (this.isAboveFloor()) {
             this.vely += 0.98
         }
-        if (this.vely >= 0 && this.y + this.radius >= height) {
-            this.vely *= this.cRest
-        }
+
+
+
     }
     isAboveFloor() {
         return abs(this.y + this.radius - height) > 1
@@ -68,36 +92,33 @@ class Particle {
             this.noborder()
 
         } else if (nature == 'Border') {
-            if (this.x <= 0 && this.velx <= 0) {
+            if (this.velx <= 0 && this.x - this.radius <= 0) {
 
                 this.velx *= - this.cRest
+                this.x = 0
                 collidingWall = true
 
 
-            } else if (this.x >= width && this.velx >= 0) {
+            } else if (this.velx >= 0 && this.x + this.radius >= width) {
+                this.x = width - this.radius
+
                 this.velx *= - this.cRest
                 collidingWall = true
             }
             if (this.vely >= 0 && this.y + this.radius >= height) {
-                this.y = height - this.radius
                 this.vely *= - this.cRest
+                this.y = height - this.radius
+
 
                 collidingWall = true
             } else if (this.vely <= 0 && this.y - this.radius <= 0) {
-                this.y = 0 - this.radius
                 this.vely *= -this.cRest
+                this.y = 0 - this.radius
 
                 collidingWall = true
             }
-            if (collidingWall) {
-                if (abs(this.vely) < 0.5) {
-                    this.vely = 0
-                }
-                if (abs(this.velx) < 0.5) {
-                    this.velx = 0
-                }
 
-            }
+
         }
         return collidingWall
     }

@@ -34,9 +34,9 @@ function draw() {
     background(bgc);
     for (const p of particles) {
         p.draw()
-        p.wallCollide('Border')
 
         p.update()
+        p.wallCollide('Border')
     }
 
 }

@@ -88,3 +88,15 @@ canvas {
         flex-direction: column;
     }
 }
+
+
+-----------------------------------------------------------class.particle.js
+applyFriction() {
+        if (!this.isAboveFloor() & !(this.velx == 0)) {
+            console.log('friction')
+            const sign = abs(this.velx) / this.velx
+            if (sign) {
+                this.velx -= sign * this.friction
+            }
+        }
+    }
