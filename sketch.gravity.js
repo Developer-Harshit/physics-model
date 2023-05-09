@@ -3,8 +3,9 @@ const mySliders = []
 const particles = []
 
 function configParticles() {
+    var p1 = new Planet()
     for (var i = 0; i < 3; i++) {
-        particles.push(new Particle())
+        particles.push(new Planet())
     }
 
 }
@@ -38,13 +39,17 @@ function draw() {
         p.draw()
 
         p.applyFriction()
-        p.applyGravity()
+        // p.applyGravity()
+
         for (let j = i + 1; j < particles.length; j++) {
             const other = particles[j]
             if (other == p) {
                 break
             }
-            p.circleCollision(other)
+            const distance = p.findDistance(other, true)
+            p.circleCollision(other, distance.mag)
+            p.applyGField(other, distance.mag, distance.x, distance.y)
+
 
 
         }

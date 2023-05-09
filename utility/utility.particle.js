@@ -14,12 +14,15 @@ Particle.prototype.isAboveFloor = function () {
     return abs(this.y + this.radius - height) > 1
 }
 
-Particle.prototype.findDistance = function (other) {
-    const xDist = this.x - other.x
-    const yDist = this.y - other.y
+Particle.prototype.findDistance = function (other, modeVect = false) {
+    const xDist = other.x - this.x
+    const yDist = other.y - this.y
     const myDist = ((xDist ** 2) + (yDist ** 2)) ** (0.5)
+    if (modeVect) {
 
-    return myDist
+        return { mag: myDist, x: xDist, y: yDist }
+    } else return myDist
+
 }
 
 Particle.prototype.noborderCollide = function () {

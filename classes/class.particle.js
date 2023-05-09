@@ -1,5 +1,5 @@
 class Particle {
-    constructor(vx = random(-5, 5), vy = random(-5, 5), radius = random(5, 12)) {
+    constructor(vx = random(-rVect, rVect), vy = random(-rVect, rVect), radius = random(5, 12)) {
         this.x = random(0, width)
         this.y = random(0, height)
 
@@ -16,7 +16,7 @@ class Particle {
 
         this.radius = radius
 
-        this.cRest = random(0.05, 0.65)
+        this.cRest = 0.65//random(0.05, 0.65)
         this.friction = 0.01
 
         this.color = { x: random(0, 255), y: random(0, 255), z: random(0, 255) }
@@ -63,9 +63,9 @@ class Particle {
 
     }
 
-    circleCollision(other) {
+    circleCollision(other, distR) {
         //Requies iterating logN times
-        const distR = this.findDistance(other)
+
 
         if (distR <= this.radius + other.radius + this.buffer + this.buffer) {
             const netMass = this.radius + other.radius
