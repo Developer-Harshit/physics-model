@@ -24,7 +24,7 @@ function setup() {
 function windowResized() {
     changeDim()
     for (const p of particles) {
-        print(p)
+
         p.fixResize(scaleCanvas, pScale)
     }
 }
