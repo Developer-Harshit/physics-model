@@ -1,7 +1,17 @@
 class Particle {
-    constructor(vx = random(-rVect, rVect), vy = random(-rVect, rVect), radius = random(5, 12)) {
-        this.x = random(0, width)
-        this.y = random(0, height)
+    constructor(
+        x = random(0, width),
+        y = random(0, height),
+        vx = random(-rVect, rVect),
+        vy = random(-rVect, rVect),
+        radius = (random([random(
+            random(3, 10),
+            random(10, 30)),
+        random(7, random(7, 25)),
+        random(3, 7)]))
+    ) {
+        this.x = x
+        this.y = y
 
         this.buffer = 0.3
 
@@ -19,10 +29,11 @@ class Particle {
         this.cRest = 0.65//random(0.05, 0.65)
         this.friction = 0.01
 
-        this.color = { x: random(0, 255), y: random(0, 255), z: random(0, 255) }
+        this.color = { x: random(50, 255), y: random(50, 255), z: random(50, 255) }
 
     }
     draw() {
+        stroke(255)
         fill(this.color.x, this.color.y, this.color.z)
         ellipse(this.x, this.y, this.radius * 2)
     }
@@ -67,7 +78,7 @@ class Particle {
         //Requies iterating logN times
 
 
-        if (distR <= this.radius + other.radius + this.buffer + this.buffer) {
+        if (distR <= this.radius + other.radius + this.buffer + other.buffer) {
             const netMass = this.radius + other.radius
             const massDiff = this.radius - other.radius
             const prevX = this.velx

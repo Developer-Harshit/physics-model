@@ -2,9 +2,11 @@ var cnv
 const mySliders = []
 const particles = []
 
+
+
 function configParticles() {
-    var p1 = new Planet()
-    for (var i = 0; i < 3; i++) {
+    fourBody()
+    for (var i = 0; i < 1; i++) {
         particles.push(new Planet())
     }
 
@@ -47,7 +49,7 @@ function draw() {
                 break
             }
             const distance = p.findDistance(other, true)
-            p.circleCollision(other, distance.mag)
+            // p.circleCollision(other, distance.mag)
             p.applyGField(other, distance.mag, distance.x, distance.y)
 
 
