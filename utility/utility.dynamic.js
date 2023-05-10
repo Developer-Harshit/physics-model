@@ -6,17 +6,17 @@ function configParticles() {
 
 }
 function initSketch() {
+
     particles = []
     mySliders = []
     cnv = createCanvas(10, 10);
-    background(bgc);
 
 
     Utility.changeDim()
     cnv.parent('canvas-div')
 
     configParticles()
-    loop()
+
 }
 
 

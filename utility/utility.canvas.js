@@ -13,6 +13,12 @@ class Utility {
 
         resizeCanvas(scaleCanvas * dim, scaleCanvas * dim)
     }
+    static setLoop() {
+        if (looping) loop()
+        else {
+            noLoop()
+        }
+    }
     static startSketch() {
         looping = true
         loop()
@@ -24,8 +30,6 @@ class Utility {
     static resetCnv() {
         initSketch()
         loop()
-
-
     }
 }
 function configButton() {

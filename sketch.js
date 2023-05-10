@@ -2,26 +2,28 @@ var cnv
 var particles
 var mySliders
 var looping = false
-
-
 function setup() {
     initSketch()
+    Utility.changeDim()
     configButton()
 
 
 }
 function windowResized() {
     Utility.changeDim()
+
     for (const p of particles) {
 
         p.fixResize(scaleCanvas, pScale)
     }
+
+
 }
 
-
 function draw() {
-    if (looping) loop()
-    else noLoop()
+
+
+
     background(bgc);
 
     for (let i = 0; i < particles.length; i++) {
@@ -47,6 +49,10 @@ function draw() {
         p.update()
 
 
+        Utility.setLoop()
+
+
     }
+
 
 }
