@@ -1,7 +1,7 @@
 function twoBody() {
     const p1 = new Planet(width / 2, height / 2)
-    const p2 = new Planet(width / 2 - 300, height / 2 - 300)
-    p1.radius = 30
+    const p2 = new Planet()
+    p1.radius = 10
     p1.update = function () {
         this.velx = 1
         this.vely = 1

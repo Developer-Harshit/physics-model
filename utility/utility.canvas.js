@@ -13,8 +13,33 @@ class Utility {
 
         resizeCanvas(scaleCanvas * dim, scaleCanvas * dim)
     }
+    static startSketch() {
+        looping = true
+        loop()
+    }
+    static stopSketch() {
+        looping = false
+        noLoop()
+    }
+    static resetCnv() {
+        initSketch()
+        loop()
 
+
+    }
 }
+function configButton() {
+    const resetButton = select('#reset-btn')
+    resetButton.mouseClicked(Utility.resetCnv)
+
+    const startButton = select('#start-btn')
+    startButton.mouseClicked(Utility.startSketch)
+
+    const stopButton = select('#stop-btn')
+    stopButton.mouseClicked(Utility.stopSketch)
+}
+
+
 
 
 

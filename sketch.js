@@ -1,28 +1,12 @@
 var cnv
-const mySliders = []
-const particles = []
+var particles
+var mySliders
+var looping = false
 
 
-
-function configParticles() {
-    threeBody()
-    // twoBody()
-
-    for (var i = 0; i < 0; i++) {
-        particles.push(new Planet())
-    }
-
-}
 function setup() {
-    cnv = createCanvas(10, 10);
-    background(bgc);
-
-
-    Utility.changeDim()
-    cnv.parent('canvas-div')
-
-    configParticles()
-
+    initSketch()
+    configButton()
 
 
 }
@@ -36,6 +20,8 @@ function windowResized() {
 
 
 function draw() {
+    if (looping) loop()
+    else noLoop()
     background(bgc);
 
     for (let i = 0; i < particles.length; i++) {
