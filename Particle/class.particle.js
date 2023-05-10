@@ -24,7 +24,7 @@ class Particle {
         this.vMax = 0
         this.aMax = 0
 
-        this.radius = radius
+        this.radius = radius / 2
 
         this.cRest = 0.65//random(0.05, 0.65)
         this.friction = 0.01

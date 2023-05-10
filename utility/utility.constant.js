@@ -1,6 +1,8 @@
-
+//Basic
 const dim = 16
 const bgc = 0
-const rVect = 0
+//Particle
+const rVect = 5
 const gravity = 0.98
-const universalG = 0.6
+//Planet
+const universalG = 0.67
