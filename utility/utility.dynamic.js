@@ -1,6 +1,5 @@
 function configParticles() {
-    twoBody()
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < random(2, 10); i++) {
         particles.push(new Planet())
     }
 

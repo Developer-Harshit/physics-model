@@ -13,7 +13,7 @@ class Particle {
         this.x = x
         this.y = y
 
-        this.buffer = 0.3
+        this.buffer = 0.0
 
         this.velx = vx
         this.vely = vy
@@ -24,9 +24,9 @@ class Particle {
         this.vMax = 0
         this.aMax = 0
 
-        this.radius = radius / 2
+        this.radius = radius
 
-        this.cRest = 0.65//random(0.05, 0.65)
+        this.cRest = random(0.05, 0.55)
         this.friction = 0.01
 
         this.color = { x: random(50, 255), y: random(50, 255), z: random(50, 255) }
@@ -90,6 +90,25 @@ class Particle {
             other.velx = ((2 * prevX * this.radius) - other.velx * (massDiff)) / netMass
             other.vely = ((2 * prevY * this.radius) - other.vely * (massDiff)) / netMass
 
+            // if (this.x + this.radius >= other.x - other.radius) {
+
+            //     this.x = other.x - other.radius
+            //     other.x += 1
+
+
+            // } else if (this.x - this.radius <= other.x + other.radius) {
+            //     // other.x = this.x - this.radius + 1
+
+            //     this.x = other.x + other.radius
+            // }
+            // if (this.y + this.radius >= other.y - other.radius) {
+
+            //     this.y = other.y - other.radius
+
+            // } else if (this.y - this.radius <= other.y + other.radius) {
+            //     other.y = this.y - this.radius
+
+            // }
             return true
 
         }

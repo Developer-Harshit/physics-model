@@ -30,8 +30,10 @@ function draw() {
         const p = particles[i]
         p.draw()
 
+        p.update()
+        p.wallCollide('Border')
         p.applyFriction()
-        // p.applyGravity()
+        p.applyGravity()
 
         for (let j = i + 1; j < particles.length; j++) {
             const other = particles[j]
@@ -40,13 +42,11 @@ function draw() {
             }
             const distance = p.findDistance(other, true)
             p.circleCollision(other, distance.mag)
-            p.applyGField(other, distance.mag, distance.x, distance.y)
+            // p.applyGField(other, distance.mag, distance.x, distance.y)
 
 
 
         }
-        p.wallCollide('Border')
-        p.update()
 
 
         Utility.setLoop()
