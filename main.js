@@ -35,35 +35,26 @@ createParticle()
 createBorders()
 
 
-let mouse = Matter.Mouse.create(render.canvas);
-let mouseConstraint = Matter.MouseConstraint.create(engine, {
-    mouse: mouse,
-    constraint: {
-        stiffness: 0.2,
-        render: {
-            visible: false
-        }
-    }
-});
+var mouse = new Mouse()
+mouse.removeListener()
 
-Composite.add(engine.world, mouseConstraint);
 
 // allow scroll through the canvas
-mouseConstraint.mouse.element.removeEventListener(
-    "mousewheel",
-    mouseConstraint.mouse.mousewheel
-);
-mouseConstraint.mouse.element.removeEventListener(
-    "DOMMouseScroll",
-    mouseConstraint.mouse.mousewheel
-);
 
 // run the renderer
 Render.run(render);
 
-// create runner
-var runner = Runner.create();
 
-// run the engine
-Runner.run(runner, engine);
+function draw() {
+    window.requestAnimationFrame(draw)
+    Engine.update(engine)
+
+}
+draw()
+
+// // create runner
+// var runner = Runner.create();
+
+
+// Runner.run(runner, engine);
 

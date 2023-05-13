@@ -2,10 +2,12 @@ var ground
 var leftWall
 var rightWall
 function createParticle() {
-    for (let i = 0; i < 10; i++) {
-        var circle = new Rect(i,
+    var cRandom = Math.floor(Math.random() * 4)
+    console.log(cRandom)
+    for (let i = 0; i < 100; i++) {
+        var circle = new Ball(i,
             Math.random() * matterContainer.clientHeight / 4,
-            50, 50)
+            20, cRandom)
 
     }
 
