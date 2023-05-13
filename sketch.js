@@ -31,22 +31,25 @@ function draw() {
         p.draw()
 
         p.update()
-        p.wallCollide('Border')
-        p.applyFriction()
-        p.applyGravity()
-
+        var isColliding = false
         for (let j = i + 1; j < particles.length; j++) {
             const other = particles[j]
             if (other == p) {
                 break
             }
             const distance = p.findDistance(other, true)
-            p.circleCollision(other, distance.mag)
+            const result = p.circleCollision(other, distance.mag)
+            if (result) {
+                isColliding = true
+            }
             // p.applyGField(other, distance.mag, distance.x, distance.y)
 
 
 
         }
+        p.wallCollide('Border')
+        p.applyFriction()
+        p.applyGravity(isColliding)
 
 
         Utility.setLoop()

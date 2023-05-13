@@ -65,9 +65,11 @@ class Particle {
 
         }
     }
-    applyGravity() {
-        if (this.isAboveFloor()) {
+    applyGravity(colliding) {
+        console.log(colliding)
+        if (this.isAboveFloor() && !colliding) {
             this.vely += gravity
+
         }
 
 
@@ -90,25 +92,8 @@ class Particle {
             other.velx = ((2 * prevX * this.radius) - other.velx * (massDiff)) / netMass
             other.vely = ((2 * prevY * this.radius) - other.vely * (massDiff)) / netMass
 
-            // if (this.x + this.radius >= other.x - other.radius) {
-
-            //     this.x = other.x - other.radius
-            //     other.x += 1
 
 
-            // } else if (this.x - this.radius <= other.x + other.radius) {
-            //     // other.x = this.x - this.radius + 1
-
-            //     this.x = other.x + other.radius
-            // }
-            // if (this.y + this.radius >= other.y - other.radius) {
-
-            //     this.y = other.y - other.radius
-
-            // } else if (this.y - this.radius <= other.y + other.radius) {
-            //     other.y = this.y - this.radius
-
-            // }
             return true
 
         }

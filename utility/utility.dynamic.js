@@ -1,5 +1,5 @@
 function configParticles() {
-    for (var i = 0; i < random(2, 10); i++) {
+    for (var i = 0; i < random(1000, 4000); i++) {
         particles.push(new Planet())
     }
 
