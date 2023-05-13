@@ -29,28 +29,10 @@ var render = Render.create({
 
 
 
-for (let i = 0; i < 100; i++) {
-    var circle = new Ball(i, 10, Math.random() * 50 + 6)
 
-}
+createParticle()
 
-var ground = new Boundary(
-    matterContainer.clientWidth / 2,
-    matterContainer.clientHeight + THICCNESS / 2,
-    27184,
-    THICCNESS)
-
-var leftWall = new Boundary(
-    0 - THICCNESS / 2,
-    matterContainer.clientHeight / 2,
-    THICCNESS,
-    matterContainer.clientHeight * 5,)
-
-var rightWall = new Boundary(matterContainer.clientWidth + THICCNESS / 2,
-    matterContainer.clientHeight / 2,
-    THICCNESS,
-    matterContainer.clientHeight * 5,)
-
+createBorders()
 
 
 let mouse = Matter.Mouse.create(render.canvas);
@@ -85,24 +67,3 @@ var runner = Runner.create();
 // run the engine
 Runner.run(runner, engine);
 
-function handleResize(matterContainer) {
-    // set canvas size to new values
-    render.canvas.width = matterContainer.clientWidth;
-    render.canvas.height = matterContainer.clientHeight;
-
-    // reposition ground
-    ground.respose(
-        matterContainer.clientWidth / 2,
-        matterContainer.clientHeight + THICCNESS / 2
-    )
-
-
-    // reposition right wall
-    rightWall.respose(
-        matterContainer.clientWidth + THICCNESS / 2,
-        matterContainer.clientHeight / 2
-    )
-
-}
-
-window.addEventListener("resize", () => handleResize(matterContainer))
