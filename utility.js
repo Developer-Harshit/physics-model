@@ -1,5 +1,8 @@
+
 var scaleCanvas
 var pScale
+var pScale
+var pHeight
 //Basic
 const dim = 16
 const bgc = 21
@@ -13,8 +16,9 @@ class Utility {
         } else {
             scaleCanvas = Math.floor(outerHeight / dim) - 6
         }
-
+        pHeight = height
         resizeCanvas(scaleCanvas * dim, scaleCanvas * dim)
+
     }
 
     static startSketch() {

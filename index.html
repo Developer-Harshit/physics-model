@@ -7,6 +7,7 @@
     <title>Physic Model</title>
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/mobile.css">
+    <link rel="stylesheet" href="styles/res.css">
     <script src="libraries/p5.js"></script>
     <script src="libraries/matter.js"></script>
     <!-- <script src="libraries/p5.sound.js"></script> -->
@@ -27,7 +28,8 @@
         </form>
       </div>
       <section id="main-game">
-        <div id="canvas-div"></div>
+        <!-- <div id="canvas-div"></div> -->
+        <div id="matter-container" class="matter-container"></div>
         <div id="button-div">
           <button id="start-btn" class="btn ">Start</button>
           <button id="stop-btn" class="btn">Stop</button>
@@ -38,13 +40,7 @@
     <footer>
       <div></div>
     </footer>
-    <!-- classes -->
-    <script src="Particle.js"></script>
-    <!-- utility -->
-    <script src="utility.js"></script>
-    <!-- sketch -->
-    <script src="sketch.js"></script>
-    <!-- <script src="sketches/demo.js"></script> -->
+    <script src="main.js"></script>
   </body>
 
 </html>

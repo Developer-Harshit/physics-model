@@ -2,12 +2,12 @@ var cnv
 var Engine = Matter.Engine,
     // Render = Matter.Render,
     Bodies = Matter.Bodies,
-    Composite = Matter.Composite;
+    Body = Matter.Body
+Composite = Matter.Composite;
 
 // create an engine
 var engine
 var world
-var yeet = false
 //bodies
 var boxA
 var boxB
@@ -22,8 +22,8 @@ function setup() {
 
     engine = Engine.create()
     world = engine.world
-    boxA = new PRectangle(20, 10, 20, 20)
-    ground = new PRectangle(width / 2, height, width, 10, { isStatic: true });
+    boxA = new PRectangle(width / 2, 10, 20, 20)
+    ground = new PRectangle(width / 2, height, width, 100, { isStatic: true });
     objects.push(...[boxA, ground])
 
     // add all of the bodies to the world
@@ -36,7 +36,9 @@ function setup() {
 // }
 function windowResized() {
     Utility.changeDim()
-    for (; ;) { }
+    objects.forEach(myBody => {
+        myBody.resizeDim(scaleCanvas, pScale)
+    });
 
 
 }
@@ -55,14 +57,13 @@ function keyPressed() {
 }
 function draw() {
     background(bgc);
-    Engine.update(engine, 15)
+    Engine.update(engine, 10)
     rectMode(CENTER)
-    // stroke(255)
-    // fill(100, 100)
-    // ellipse(100, 100, 50, 50)
-    // rect(boxA.body.position.x, boxA.body.position.y, 80, 80)
+
+
     objects.forEach(myBody => {
         myBody.draw()
+        // console.log(myBody.dim, myBody.findDim())
     });
 
 }
