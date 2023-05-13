@@ -9,7 +9,23 @@ body {
 }
 
 div.matter-container {
+
     overflow: hidden;
-    width: 100%;
-    height: 100vh;
+    width: 80%;
+    height: 80vh;
+    margin: auto;
+    border: 5px solid #fff;
+    border-top: none;
+}
+
+main {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    color: aliceblue;
+    margin: auto;
+    text-align: -webkit-center;
+}
+
+h1 {
+    background-color: #0b050d;
 }

@@ -1,6 +1,8 @@
 const matterContainer = document.querySelector("#matter-container");
-const THICCNESS = 1000;
 
+
+const THICCNESS = 10000;
+const scale = 0.6
 // module aliases
 var Engine = Matter.Engine,
     Render = Matter.Render,
@@ -10,6 +12,7 @@ var Engine = Matter.Engine,
 
 // create an engine
 var engine = Engine.create();
+engine.gravity.y = 0.98
 
 // create a renderer
 var render = Render.create({
@@ -24,36 +27,10 @@ var render = Render.create({
     }
 });
 
-class Ball {
-    constructor(x, y, r) {
-        const options = {
-            friction: 0.3,
-            frictionAir: 0.00001,
-            restitution: 0.8
-        }
-        this.body = Bodies.circle(x, y, r, options);
-        Composite.add(engine.world, this.body);
-    }
-}
 
-class Boundary {
-    constructor(x, y, w, h) {
-        const options = { isStatic: true }
-        this.body = Bodies.rectangle(x, y, w, h, options)
-        Composite.add(engine.world, this.body)
-    }
-    respose(x, y) {
-        Matter.Body.setPosition(
-            this.body,
-            Matter.Vector.create(x, y)
-        );
-    }
-}
-class Mouse {
 
-}
 for (let i = 0; i < 100; i++) {
-    var circle = new Ball(i, 10, Math.random() * 30 + 10)
+    var circle = new Ball(i, 10, Math.random() * 50 + 6)
 
 }
 
@@ -76,7 +53,6 @@ var rightWall = new Boundary(matterContainer.clientWidth + THICCNESS / 2,
 
 
 
-var mouseBody = new Mouse()
 let mouse = Matter.Mouse.create(render.canvas);
 let mouseConstraint = Matter.MouseConstraint.create(engine, {
     mouse: mouse,
