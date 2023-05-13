@@ -1,61 +1,68 @@
 var cnv
-var particles
-var mySliders
-var looping = false
+var Engine = Matter.Engine,
+    // Render = Matter.Render,
+    Bodies = Matter.Bodies,
+    Composite = Matter.Composite;
+
+// create an engine
+var engine
+var world
+var yeet = false
+//bodies
+var boxA
+var boxB
+var ground
+
+var objects = []
 function setup() {
-    initSketch()
+    cnv = createCanvas(1000, 1000)
     Utility.changeDim()
-    configButton()
+    cnv.parent('canvas-div')
+
+
+    engine = Engine.create()
+    world = engine.world
+    boxA = new PRectangle(20, 10, 20, 20)
+    ground = new PRectangle(width / 2, height, width, 10, { isStatic: true });
+    objects.push(...[boxA, ground])
+
+    // add all of the bodies to the world
+
 
 
 }
+// function mouseDragged() {
+//     objects.push(new PRectangle(mouseX, mouseY, 20, 20))
+// }
 function windowResized() {
     Utility.changeDim()
-
-    for (const p of particles) {
-
-        p.fixResize(scaleCanvas, pScale)
-    }
+    for (; ;) { }
 
 
 }
 
-function draw() {
+function mouseDragged() {
+    objects.push(new PRectangle(mouseX, mouseY, 20, 20))
+}
+function keyPressed() {
+    try {
+        objects[0].deleteBody()
+        objects.splice(0, 1)
 
-
-
-    background(bgc);
-
-    for (let i = 0; i < particles.length; i++) {
-        const p = particles[i]
-        p.draw()
-
-        p.update()
-        var isColliding = false
-        for (let j = i + 1; j < particles.length; j++) {
-            const other = particles[j]
-            if (other == p) {
-                break
-            }
-            const distance = p.findDistance(other, true)
-            const result = p.circleCollision(other, distance.mag)
-            if (result) {
-                isColliding = true
-            }
-            // p.applyGField(other, distance.mag, distance.x, distance.y)
-
-
-
-        }
-        p.wallCollide('Border')
-        p.applyFriction()
-        p.applyGravity(isColliding)
-
-
-        Utility.setLoop()
-
-
+    } catch (e) {
+        console.log(e.message)
     }
-
+}
+function draw() {
+    background(bgc);
+    Engine.update(engine, 15)
+    rectMode(CENTER)
+    // stroke(255)
+    // fill(100, 100)
+    // ellipse(100, 100, 50, 50)
+    // rect(boxA.body.position.x, boxA.body.position.y, 80, 80)
+    objects.forEach(myBody => {
+        myBody.draw()
+    });
 
 }

@@ -13,7 +13,6 @@ function initSketch() {
 
     Utility.changeDim()
     cnv.parent('canvas-div')
-
     configParticles()
 
 }
