@@ -7,7 +7,6 @@
     <title>Physic Model</title>
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/mobile.css">
-    <link rel="stylesheet" href="styles/res.css">
     <!-- <script src="libraries/p5.js"></script> -->
     <script src="libraries/matter.js"></script>
     <!-- <script src="libraries/p5.sound.js"></script> -->
@@ -20,11 +19,23 @@
       <div id="form-div">
         <form>
           <ol id="slider-ol">
+            <li>
+              <label for="testing">Test Sliders</label>
+              <input id='testing' type="range">
+            </li>
+            <li>
+              <label for="testing">Mode</label>
+              <select name="mode" id="mode">
+                <option value="0">Ball</option>
+                <option value="1">Box</option>
+              </select>
+            </li>
             <!-- structure -->
             <!-- <li>
               <p></p><input type="range">
             </li> -->
           </ol>
+          <button id="config-btn" class="btn ">Save and Reset</button>
         </form>
       </div>
       <section id="main-game">
@@ -44,8 +55,10 @@
     <script src="classes/boundary.js"></script>
     <script src="classes/mouse.js"></script>
     <script src="createBodies.js"></script>
-    <script src="handleResize.js"></script>
     <script src="main.js"></script>
+    <script src="handleResize.js"></script>
+    <script src="handleLoop.js"></script>
+    <script src="handleForm.js"></script>
   </body>
 
 </html>

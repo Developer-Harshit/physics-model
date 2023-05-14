@@ -1,5 +1,6 @@
 const matterContainer = document.querySelector("#matter-container");
-
+var mode = 0
+const modes = ['ball', 'box']
 
 const THICCNESS = 10000;
 const scale = 0.6
@@ -30,10 +31,9 @@ var render = Render.create({
 
 
 
-createParticle()
+createParticle(mode)
 
 createBorders()
-
 
 var mouse = new Mouse()
 mouse.removeListener()
@@ -45,11 +45,17 @@ mouse.removeListener()
 Render.run(render);
 
 
+var state = 1
 function draw() {
     window.requestAnimationFrame(draw)
-    Engine.update(engine)
+    if (state == 1) {
+        Engine.update(engine)
+
+    }
+
 
 }
+
 draw()
 
 // // create runner

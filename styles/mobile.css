@@ -12,11 +12,11 @@
 #form-div ol {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: start;
+    justify-items: stretch;
 }
 
-#canvas-div {
-    padding: 5rem 0px;
+#matter-container {
+    /* padding: 5rem 0px; */
     /* margin: auto; */
     text-align: -webkit-center;
 }
@@ -29,7 +29,7 @@
 #form-div li {
     list-style: none;
     display: flex;
-    flex-direction: column-reverse;
-    width: clamp(30vw, 10rem + 20vw, 40vw);
-    font-size: clamp(1vw + 0.2rem, 0.5rem + 3vw, 3vw + 1rem);
+    flex-direction: column;
+    /* width: clamp(30vw, 10rem + 20vw, 40vw);
+    font-size: clamp(1vw + 0.2rem, 0.5rem + 3vw, 3vw + 1rem); */
 }

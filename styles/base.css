@@ -5,10 +5,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  background-color: #0d080e;
+
+}
 
 body {
-  background-color: #1a0e16;
-  color: white;
+
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
 }
 
 header {
@@ -16,6 +26,31 @@ header {
   background-color: #1b071f;
 
 }
+
+
+div.matter-container {
+
+  overflow: hidden;
+  width: 80%;
+  height: 80vh;
+  margin: auto;
+  border: 5px solid #fff;
+  border-top: none;
+}
+
+main {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  color: aliceblue;
+  background-color: #0b050d;
+  margin: auto;
+  text-align: -webkit-center;
+}
+
+h1 {
+  background-color: #0b050d;
+}
+
 
 #main-game {
   background-color: #0b050d;

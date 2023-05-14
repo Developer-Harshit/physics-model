@@ -3,13 +3,13 @@ var leftWall
 var rightWall
 function createParticle() {
     var cRandom = Math.floor(Math.random() * 4)
-    console.log(cRandom)
     for (let i = 0; i < 100; i++) {
         var circle = new Ball(i,
             Math.random() * matterContainer.clientHeight / 4,
             20, cRandom)
 
     }
+
 
 }
 function createBorders() {
