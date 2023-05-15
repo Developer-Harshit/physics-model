@@ -1,12 +1,21 @@
 var ground
 var leftWall
 var rightWall
-function createParticle() {
+function createParticle(mymode) {
     var cRandom = Math.floor(Math.random() * 4)
     for (let i = 0; i < 100; i++) {
-        var circle = new Ball(i,
-            Math.random() * matterContainer.clientHeight / 4,
-            20, cRandom)
+        var rSize = Math.random() * 20 + 5
+        if (mymode == '0') {
+
+            var ball = new Ball(i,
+                Math.random() * matterContainer.clientHeight / 4,
+                rSize, cRandom)
+        }
+        else if (mymode == '1') {
+            var box = new Box(i,
+                Math.random() * matterContainer.clientHeight / 4,
+                rSize * 2, rSize * 2, cRandom)
+        }
 
     }
 

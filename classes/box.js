@@ -1,4 +1,4 @@
-class Rect {
+class Box {
     constructor(x, y, w, h, colorType = 1) {
 
         const render = {

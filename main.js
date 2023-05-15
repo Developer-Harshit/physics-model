@@ -1,5 +1,6 @@
 const matterContainer = document.querySelector("#matter-container");
-var mode = 0
+var mode = '0'
+
 const modes = ['ball', 'box']
 
 const THICCNESS = 10000;

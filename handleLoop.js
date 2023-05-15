@@ -3,7 +3,7 @@ const stopBtn = document.querySelector('#stop-btn')
 const resetBtn = document.querySelector('#reset-btn')
 
 
-const configBtn = document.querySelector('#reset-btn')
+const configBtn = document.querySelector('#config-btn')
 const modeSelector = document.querySelector('#form-div form select')
 
 function startSim() {
@@ -15,14 +15,15 @@ function stopSim() {
 
 
 }
-function resetSim() {
+function resetSim(event) {
+    event.preventDefault()
     Composite.clear(engine.world)
     Engine.clear(engine)
 
-    // if (modeSelector.value) {
-    //     mode = modeSelector.value
-    //     console.log(mode)
-    // }
+    if (modeSelector.value) {
+        mode = (modeSelector.value)
+        console.log(mode)
+    }
     createParticle(mode)
 
     createBorders()
