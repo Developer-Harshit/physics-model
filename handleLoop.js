@@ -33,4 +33,3 @@ startBtn.addEventListener('click', startSim)
 stopBtn.addEventListener('click', stopSim)
 resetBtn.addEventListener('click', resetSim)
 
-configBtn.addEventListener('click', configSim)
