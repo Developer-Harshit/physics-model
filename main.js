@@ -1,15 +1,16 @@
 const matterContainer = document.querySelector("#matter-container");
-var mode = '0'
 
 const modes = ['ball', 'box']
 
 const THICCNESS = 10000;
 const scale = 0.6
+const myParticles = []
 // module aliases
 var Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
+    Detector = Matter.Detector,
     Composite = Matter.Composite;
 
 // create an engine
@@ -29,7 +30,7 @@ var render = Render.create({
     }
 });
 
-
+var detector = Detector.create()
 
 
 createParticle(mode)
@@ -47,12 +48,22 @@ Render.run(render);
 
 
 var state = 1
+
 function draw() {
     window.requestAnimationFrame(draw)
+    const collisions = Detector.collisions(detector)
+    const collisionPairs = collisions.map(a => [a.bodyA, a.bodyB]);
+
     if (state == 1) {
         Engine.update(engine)
+        if (blending) {
+
+            mixColor(collisionPairs, intensity)
+        }
 
     }
+
+
 
 
 }

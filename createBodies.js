@@ -1,26 +1,40 @@
-var ground
-var leftWall
-var rightWall
+
+var mode = '0'
+var blending = false
+var intensity = 1 / 10 ** 10
 function createParticle(mymode) {
     var cRandom = Math.floor(Math.random() * 4)
-    for (let i = 0; i < 100; i++) {
-        var rSize = Math.random() * 20 + 5
+
+    myParticles.length = 0
+    Detector.clear(detector)
+
+    for (let i = 0; i < 50; i++) {
+        var rSize = Math.random() * 20 + 10
+        var aBody
         if (mymode == '0') {
 
-            var ball = new Ball(i,
-                Math.random() * matterContainer.clientHeight / 4,
+            aBody = new Ball(
+                Math.random() * matterContainer.clientWidth,
+                Math.random() * matterContainer.clientHeight,
                 rSize, cRandom)
         }
         else if (mymode == '1') {
-            var box = new Box(i,
-                Math.random() * matterContainer.clientHeight / 4,
+            aBody = new Box(
+                Math.random() * matterContainer.clientWidth,
+                Math.random() * matterContainer.clientHeight,
                 rSize * 2, rSize * 2, cRandom)
         }
+        myParticles.push(aBody.body)
 
     }
+    Detector.setBodies(detector, myParticles)
+
 
 
 }
+var ground
+var leftWall
+var rightWall
 function createBorders() {
     ground = new Boundary(
         matterContainer.clientWidth / 2,

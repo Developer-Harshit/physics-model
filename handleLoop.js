@@ -5,7 +5,7 @@ const resetBtn = document.querySelector('#reset-btn')
 
 const configBtn = document.querySelector('#config-btn')
 const modeSelector = document.querySelector('#form-div form select')
-
+const SettingForm = document.querySelector('#form-div form')
 function startSim() {
     state = 1
 
@@ -17,12 +17,18 @@ function stopSim() {
 }
 function resetSim(event) {
     event.preventDefault()
+    const formData = Object.fromEntries([...new FormData(SettingForm).entries()])
+    if (formData.colorMode) {
+        blending = true
+        intensity = formData.intensity
+    }
+    console.log(formData)
+
     Composite.clear(engine.world)
     Engine.clear(engine)
 
-    if (modeSelector.value) {
-        mode = (modeSelector.value)
-        console.log(mode)
+    if (formData.mode) {
+        mode = (formData.mode)
     }
     createParticle(mode)
 

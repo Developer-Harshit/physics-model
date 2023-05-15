@@ -30,6 +30,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     /* width: clamp(30vw, 10rem + 20vw, 40vw);
     font-size: clamp(1vw + 0.2rem, 0.5rem + 3vw, 3vw + 1rem); */
 }
