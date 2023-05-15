@@ -1,16 +1,23 @@
 
-var mode = '0'
+var mode = '2'
 var blending = false
-var intensity = 1 / 10 ** 10
+var intensity = 0.04
+var iter = 200
+
+
+
+
 function createParticle(mymode) {
     var cRandom = Math.floor(Math.random() * 4)
 
     myParticles.length = 0
     Detector.clear(detector)
 
-    for (let i = 0; i < 50; i++) {
-        var rSize = Math.random() * 20 + 10
+
+
+    for (let i = 0; i < iter; i++) {
         var aBody
+        var rSize = (Math.random() * 30 + 10) * 150 / 500
         if (mymode == '0') {
 
             aBody = new Ball(
@@ -24,9 +31,20 @@ function createParticle(mymode) {
                 Math.random() * matterContainer.clientHeight,
                 rSize * 2, rSize * 2, cRandom)
         }
+        else if (mymode == '2') {
+
+            aBody = new Fluid(
+                Math.random() * matterContainer.clientWidth,
+                Math.random() * matterContainer.clientHeight,
+                7, cRandom)
+
+
+        }
+
         myParticles.push(aBody.body)
 
     }
+
     Detector.setBodies(detector, myParticles)
 
 

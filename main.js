@@ -1,10 +1,4 @@
-const matterContainer = document.querySelector("#matter-container");
 
-const modes = ['ball', 'box']
-
-const THICCNESS = 10000;
-const scale = 0.6
-const myParticles = []
 // module aliases
 var Engine = Matter.Engine,
     Render = Matter.Render,
@@ -32,8 +26,15 @@ var render = Render.create({
 
 var detector = Detector.create()
 
+mode = '2'
+blending = true
+intensity = Math.max(intensity, 0.01)
 
 createParticle(mode)
+
+
+
+assignSetting()
 
 createBorders()
 
