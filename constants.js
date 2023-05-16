@@ -23,7 +23,7 @@ const myParticles = []
 const scale = 0.6
 
 var blending = false
-var intensity = 0.04
+var intensity = 0.013
 var iter = 200
 var mode = '2'
 
