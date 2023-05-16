@@ -88,6 +88,8 @@ function int_to_hex(num) {
 function rgb_to_hex(r, g, b) {
     return '#' + int_to_hex(r) + int_to_hex(g) + int_to_hex(b);
 }
+
+
 function mixColor(pairs, intensity) {
     for (const pair of pairs) {
         color1 = pair[0].render.fillStyle
@@ -96,8 +98,11 @@ function mixColor(pairs, intensity) {
         border2 = pair[1].render.strokeStyle
         pair[0].render.fillStyle = blend_colors(color1, color2, intensity)
         pair[1].render.fillStyle = blend_colors(color2, color1, intensity)
-        pair[0].render.strokeStyle = blend_colors(color1, color2, intensity)
-        pair[1].render.strokeStyle = blend_colors(color2, color1, intensity)
+
+        k1 = blend_colors(border1, border2, intensity)
+        k2 = blend_colors(border2, border1, intensity)
+        pair[0].render.strokeStyle = blend_colors(k1, '#000000', 0.0026)
+        pair[1].render.strokeStyle = blend_colors(k2, '#000000', 0.0026)
 
 
 

@@ -1,12 +1,9 @@
-
-
 function startSim() {
     state = 1
 
 }
 function stopSim() {
     state = 0
-
 
 }
 function resetSim(event) {
@@ -21,11 +18,6 @@ function resetSim(event) {
     createBorders()
     mouse = new Mouse()
     mouse.removeListener()
-
-
-
-
-
 
 }
 

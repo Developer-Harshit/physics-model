@@ -3,47 +3,76 @@ class Utility {
 
         this.color = this.seleteColor(colorType)
 
+
     }
     seleteColor(colorType) {
-        var cx = 220, cy = 220, cz = 220
+        var cx = 130, cy = 130, cz = 130
 
         switch (colorType) {
             // 255,0,0
             // 0,255,0
             // 0,0,255
-            //     cmy
+            //     cmy cm cy my
             // rb
             // gb 
             case 0:
                 var cR = (Math.random())
+                console.log('hi')
 
                 if (cR > 0.5) {
-                    cx = 255, cy = 0, cz = 0
+                    cx = 130, cy = 30, cz = 190
                 } else {
-                    cx = 0, cy = 255, cz = 0
+                    cx = 30, cy = 130, cz = 190
                 }
                 break
             case 1:
                 var cR = (Math.random())
+                console.log('hi')
 
                 if (cR > 0.5) {
-                    cx = 255, cy = 255, cz = 0
+                    cx = 190, cy = 30, cz = 130
                 } else {
-                    cx = 0, cy = 0, cz = 255
+                    cx = 30, cy = 190, cz = 130
                 }
                 break
-
-
             case 2:
                 var cR = (Math.random())
+
                 if (cR > 0.5) {
-                    cx = 0, cy = 0, cz = 255
+                    cx = 130, cy = 30, cz = 190
                 } else {
-                    cx = 0, cy = 255, cz = 0
+                    cx = 190, cy = 130, cz = 30
+                }
+                break
+            case 3:
+                var cR = (Math.random())
+
+                if (cR > 0.5) {
+                    cx = 170, cy = 10, cz = 150
+                } else {
+                    cx = 190, cy = 130, cz = 30
                 }
                 break
 
-            case 3:
+            case 4:
+                var cR = (Math.random())
+                if (cR > 0.5) {
+                    cx = 30, cy = 150, cz = 190
+                } else {
+                    cx = 190, cy = 130, cz = 30
+                }
+                break
+
+            case 5:
+                var cR = (Math.random())
+                if (cR > 0.5) {
+                    cx = 0, cy = 140, cz = 190
+                } else {
+                    cx = 160, cy = 180, cz = 20
+                }
+                break
+
+            case 6:
                 var cR = (Math.random())
                 if (cR > 0.5) {
                     cx = 0, cy = 0, cz = 0

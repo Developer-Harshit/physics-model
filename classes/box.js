@@ -3,7 +3,7 @@ class Box extends Utility {
         super(colorType)
         const render = {
             fillStyle: this.color,
-            strokeStyle: 'this.color',
+            strokeStyle: this.color,
             lineWidth: 1
         }
         const options = {

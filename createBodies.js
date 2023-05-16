@@ -1,16 +1,10 @@
 
-
-
-
-
-
 function createParticle(mymode) {
-    var cRandom = Math.floor(Math.random() * 4)
+    var cRandom = Math.floor(Math.random() * 7)
+    console.log('Random color', cRandom)
 
     myParticles.length = 0
     Detector.clear(detector)
-
-
 
     for (let i = 0; i < iter; i++) {
         var aBody
@@ -45,27 +39,5 @@ function createParticle(mymode) {
     Detector.setBodies(detector, myParticles)
 
 
-
-}
-var ground
-var leftWall
-var rightWall
-function createBorders() {
-    ground = new Boundary(
-        matterContainer.clientWidth / 2,
-        matterContainer.clientHeight + THICCNESS / 2,
-        27184,
-        THICCNESS)
-
-    leftWall = new Boundary(
-        0 - THICCNESS / 2,
-        matterContainer.clientHeight / 2,
-        THICCNESS,
-        matterContainer.clientHeight * 5,)
-
-    rightWall = new Boundary(matterContainer.clientWidth + THICCNESS / 2,
-        matterContainer.clientHeight / 2,
-        THICCNESS,
-        matterContainer.clientHeight * 5,)
 
 }
