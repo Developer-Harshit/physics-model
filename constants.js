@@ -20,3 +20,16 @@ const modes = ['ball', 'box']
 const THICCNESS = 10000;
 const scale = 0.6
 const myParticles = []
+
+
+var mode = '2'
+var blending = false
+var intensity = 0.04
+var iter = 200
+
+const Engine = Matter.Engine,
+    Render = Matter.Render,
+    Runner = Matter.Runner,
+    Bodies = Matter.Bodies,
+    Detector = Matter.Detector,
+    Composite = Matter.Composite;

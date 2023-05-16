@@ -2,14 +2,17 @@
 function handleForm() {
     const formData = Object.fromEntries([...new FormData(SettingForm).entries()])
 
+
     if (formData.colorMode) {
         blending = true
         intensity = formData.intensity
+    } else {
+        blending = false
     }
 
     if (parseInt(formData.count) > 0 || parseInt(formData.count) < 700 || parseInt(formData.count)) {
         iter = parseInt(formData.count)
-        console.log(iter)
+
     }
 
 

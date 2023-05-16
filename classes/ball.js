@@ -7,8 +7,8 @@ class Ball extends Utility {
             lineWidth: 5
         }
         const options = {
-            friction: 1,
-            frictionAir: 0.0001,
+            friction: 0.9,
+            frictionAir: 0.00001,
             restitution: 0.9,
             render
 

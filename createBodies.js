@@ -1,8 +1,5 @@
 
-var mode = '2'
-var blending = false
-var intensity = 0.04
-var iter = 200
+
 
 
 

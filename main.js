@@ -1,11 +1,5 @@
 
 // module aliases
-var Engine = Matter.Engine,
-    Render = Matter.Render,
-    Runner = Matter.Runner,
-    Bodies = Matter.Bodies,
-    Detector = Matter.Detector,
-    Composite = Matter.Composite;
 
 // create an engine
 var engine = Engine.create();
@@ -52,12 +46,12 @@ var state = 1
 
 function draw() {
     window.requestAnimationFrame(draw)
-    const collisions = Detector.collisions(detector)
-    const collisionPairs = collisions.map(a => [a.bodyA, a.bodyB]);
 
     if (state == 1) {
         Engine.update(engine)
         if (blending) {
+            const collisions = Detector.collisions(detector)
+            const collisionPairs = collisions.map(a => [a.bodyA, a.bodyB]);
 
             mixColor(collisionPairs, intensity)
         }

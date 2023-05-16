@@ -8,7 +8,7 @@ class Box extends Utility {
         }
         const options = {
             friction: 0.3,
-            frictionAir: 0.0001,
+            frictionAir: 0.00001,
             restitution: 0, render
         }
         this.body = Bodies.rectangle(x, y, w, h, options);
