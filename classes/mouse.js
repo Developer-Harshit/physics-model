@@ -25,4 +25,19 @@ class Mouse {
         );
 
     }
+    hasParticle() {
+        const sticked = this.body.body
+        if (!sticked) {
+            return
+        }
+        if (sticked.color) {
+            console.log('defined', sticked.color)
+        } else {
+            sticked.color = '#000'
+        }
+        color1 = sticked.render.fillStyle
+        color2 = '#ffffff'
+        sticked.render.fillStyle = blend_colors(color1, color2, 0.06)
+        sticked.render.strokeStyle = blend_colors(color1, color2, 0.001)
+    }
 }

@@ -14,7 +14,7 @@ class Ball extends Utility {
 
         }
         this.body = Bodies.circle(x, y, r, options);
-
+        this.body.color = this.color
         Composite.add(engine.world, this.body);
     }
 

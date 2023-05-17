@@ -1,7 +1,8 @@
 
+var cRandom
 function createParticle(mymode) {
-    var cRandom = Math.floor(Math.random() * 7)
-    console.log('Random color', cRandom)
+    cRandom = Math.floor(Math.random() * 7)
+
 
     myParticles.length = 0
     Detector.clear(detector)

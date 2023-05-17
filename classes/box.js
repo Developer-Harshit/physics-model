@@ -12,7 +12,7 @@ class Box extends Utility {
             restitution: 0, render
         }
         this.body = Bodies.rectangle(x, y, w, h, options);
-
+        this.body.color = this.color
         Composite.add(engine.world, this.body);
     }
 
