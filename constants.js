@@ -24,7 +24,7 @@ const scale = 0.6
 
 var blending = false
 var intensity = 0.013
-var iter = 1
+var iter = 10
 var mode = '3'
 
 var ground

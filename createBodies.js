@@ -1,7 +1,7 @@
 
-var cRandom
+var rColor
 function createParticle(mymode) {
-    cRandom = Math.floor(Math.random() * 7)
+    rColor = Math.floor(Math.random() * 7)
 
 
     myParticles.length = 0
@@ -18,36 +18,36 @@ function createParticle(mymode) {
             aBody = new Ball(
                 rWidth,
                 rHeight,
-                rSize, cRandom)
+                rSize, rColor)
         }
         else if (mymode == '1') {
             aBody = new Box(
                 rWidth,
                 rHeight,
-                rSize * 2, rSize * 2, cRandom)
+                rSize * 2, rSize * 2, rColor)
         }
         else if (mymode == '2') {
 
             aBody = new Fluid(
                 rWidth,
                 rHeight,
-                7, cRandom)
+                7, rColor)
 
 
         }
         else if (mymode == '3') {
             aBody = new Ball(
-                rWidth,
-                rHeight,
-                12, 1)
-            rWidth = Math.random() * matterContainer.clientWidth
-            rHeight = Math.random() * matterContainer.clientHeight
+                matterContainer.clientWidth / 2,
+                40,
+                12, rColor)
+
             var bBody = new Ball(
                 rWidth,
                 rHeight,
-                12, 1)
+                12, rColor)
             myParticles.push(bBody.body)
-            const chain = new Chain(aBody.body, bBody.body, 20, 0.9)
+            const chain = new Chain(aBody.body, bBody.body, 0.9)
+
             chain.createChain()
 
         }

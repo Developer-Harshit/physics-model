@@ -50,7 +50,7 @@ function draw() {
         Engine.update(engine)
 
         if (blending) {
-            mouse.hasParticle(cRandom)
+            mouse.hasParticle(rColor)
             const collisions = Detector.collisions(detector)
             const collisionPairs = collisions.map(a => [a.bodyA, a.bodyB]);
 

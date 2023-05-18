@@ -1,40 +1,43 @@
 class Joint {
     constructor(x, y, r) {
-        const render = { visible: true }
+        const render = { visible: false }
         const options = {
-            friction: 0.9,
-            frictionAir: 0.00001,
-            restitution: 0.9,
+            friction: 1,
+            frictionAir: 0,
+            restitution: 1,
             render
         }
         this.body = Bodies.circle(x, y, r, options);
+
         Composite.add(engine.world, this.body);
-        this.body.collisionFilter.group = -1
 
     }
 
 }
 
 class Chain {
-    constructor(bodyA, bodyB, length, stiffness) {
+    constructor(bodyA, bodyB, stiffness) {
         //set of constraints
         //set of body
         this.bodyA = bodyA
         this.bodyB = bodyB
-        // this.length = length
+
         this.length = findMag(subtractVectors(bodyA.position, bodyB.position))
         this.stiffness = stiffness
         this.dx = this.length
+
+
     }
     createChain() {
         const unitDist = this.findDistUnit()
         ////////////////
         // some advanced distrubuting algorithm
         ////////////////
-        const num = 20
+        const num = 30
         this.dx = this.length / num
 
 
+        console.log(this.length, this.dx)
 
 
 
@@ -45,33 +48,26 @@ class Chain {
             const x = this.bodyA.position.x + unitDist.x * i * this.dx
             const y = this.bodyA.position.y + unitDist.y * i * this.dx
 
-            const joint = new Joint(x, y, 2)
-            var options = {
-                bodyA: first,
-                bodyB: joint.body,
-                length: this.dx,
-                stiffness: this.stiffness
-            }
-            var constraint = Constraint.create(options)
-            Composite.add(engine.world, constraint)
+            const joint = new Joint(x, y, 12)
+            this.createConstraint(first, joint.body)
+
             first = joint.body
 
-
-
-
         }
+        this.createConstraint(first, this.bodyB)
+
+
+
+    }
+    createConstraint(bodyA, bodyB) {
         var options = {
-            bodyA: first,
-            bodyB: this.bodyB,
+            bodyA: bodyA,
+            bodyB: bodyB,
             length: this.dx,
             stiffness: this.stiffness
         }
         var constraint = Constraint.create(options)
         Composite.add(engine.world, constraint)
-
-
-
-
     }
     distribute() {
 

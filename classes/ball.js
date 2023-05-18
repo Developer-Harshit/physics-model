@@ -1,5 +1,5 @@
 class Ball extends Utility {
-    constructor(x, y, r, colorType = 0) {
+    constructor(x, y, r, colorType = 0, isFixed = false) {
         super(colorType)
         const render = {
             fillStyle: this.color,
@@ -9,7 +9,7 @@ class Ball extends Utility {
         const options = {
             friction: 0.9,
             frictionAir: 0.00001,
-            restitution: 0.9,
+            restitution: 0.9, isStatic: isFixed,
             render
 
         }
