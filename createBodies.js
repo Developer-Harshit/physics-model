@@ -8,32 +8,53 @@ function createParticle(mymode) {
     Detector.clear(detector)
 
     for (let i = 0; i < iter; i++) {
-        var aBody
+        var aBody = undefined
         var rSize = (Math.random() * 30 + 10) * 150 / 500
+
+        var rWidth = Math.random() * matterContainer.clientWidth
+        var rHeight = Math.random() * matterContainer.clientHeight
         if (mymode == '0') {
 
             aBody = new Ball(
-                Math.random() * matterContainer.clientWidth,
-                Math.random() * matterContainer.clientHeight,
+                rWidth,
+                rHeight,
                 rSize, cRandom)
         }
         else if (mymode == '1') {
             aBody = new Box(
-                Math.random() * matterContainer.clientWidth,
-                Math.random() * matterContainer.clientHeight,
+                rWidth,
+                rHeight,
                 rSize * 2, rSize * 2, cRandom)
         }
         else if (mymode == '2') {
 
             aBody = new Fluid(
-                Math.random() * matterContainer.clientWidth,
-                Math.random() * matterContainer.clientHeight,
+                rWidth,
+                rHeight,
                 7, cRandom)
 
 
         }
+        else if (mymode == '3') {
+            aBody = new Ball(
+                rWidth,
+                rHeight,
+                12, 1)
+            rWidth = Math.random() * matterContainer.clientWidth
+            rHeight = Math.random() * matterContainer.clientHeight
+            var bBody = new Ball(
+                rWidth,
+                rHeight,
+                12, 1)
+            myParticles.push(bBody.body)
+            const chain = new Chain(aBody.body, bBody.body, 20, 0.9)
+            chain.createChain()
 
-        myParticles.push(aBody.body)
+        }
+        if (aBody) {
+
+            myParticles.push(aBody.body)
+        }
 
     }
 

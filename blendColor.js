@@ -26,7 +26,6 @@ function seleteColor(colorType) {
         // gb 
         case 0:
             var cR = (Math.random())
-            console.log('hi')
 
             if (cR > 0.5) {
                 cx = 130, cy = 30, cz = 190
@@ -36,7 +35,6 @@ function seleteColor(colorType) {
             break
         case 1:
             var cR = (Math.random())
-            console.log('hi')
 
             if (cR > 0.5) {
                 cx = 190, cy = 30, cz = 130

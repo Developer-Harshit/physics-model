@@ -30,13 +30,10 @@ class Mouse {
         if (!sticked) {
             return
         }
-        if (sticked.color) {
-            console.log('defined', sticked.color)
-        } else {
-            sticked.color = '#000'
-        }
-        color1 = sticked.render.fillStyle
-        color2 = '#ffffff'
+
+
+        var color1 = sticked.render.fillStyle
+        var color2 = '#ffffff'
         sticked.render.fillStyle = blend_colors(color1, color2, 0.06)
         sticked.render.strokeStyle = blend_colors(color1, color2, 0.001)
     }

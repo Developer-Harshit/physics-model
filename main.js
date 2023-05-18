@@ -20,9 +20,8 @@ var render = Render.create({
 
 var detector = Detector.create()
 
-mode = '2'
-blending = true
-intensity = Math.max(intensity, 0.01)
+
+
 
 createParticle(mode)
 
@@ -49,8 +48,9 @@ function draw() {
 
     if (state == 1) {
         Engine.update(engine)
-        mouse.hasParticle(cRandom)
+
         if (blending) {
+            mouse.hasParticle(cRandom)
             const collisions = Detector.collisions(detector)
             const collisionPairs = collisions.map(a => [a.bodyA, a.bodyB]);
 

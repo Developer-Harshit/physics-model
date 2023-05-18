@@ -2,9 +2,11 @@ class Utility {
     constructor(colorType) {
 
         this.color = this.seleteColor(colorType)
-
+        this.chain = []
+        // structure [{chain: object,host: body}]
 
     }
+
     seleteColor(colorType) {
         var cx = 130, cy = 130, cz = 130
 
@@ -17,7 +19,6 @@ class Utility {
             // gb 
             case 0:
                 var cR = (Math.random())
-                console.log('hi')
 
                 if (cR > 0.5) {
                     cx = 130, cy = 30, cz = 190
@@ -27,7 +28,6 @@ class Utility {
                 break
             case 1:
                 var cR = (Math.random())
-                console.log('hi')
 
                 if (cR > 0.5) {
                     cx = 190, cy = 30, cz = 130

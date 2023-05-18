@@ -24,8 +24,8 @@ const scale = 0.6
 
 var blending = false
 var intensity = 0.013
-var iter = 200
-var mode = '2'
+var iter = 1
+var mode = '3'
 
 var ground
 var leftWall
@@ -36,4 +36,5 @@ const Engine = Matter.Engine,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
     Detector = Matter.Detector,
-    Composite = Matter.Composite;
+    Composite = Matter.Composite,
+    Constraint = Matter.Constraint;

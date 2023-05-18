@@ -9,4 +9,10 @@ Color schema - red , cyan ,dark violet
             color: #5ed3ba;
             color: #0f847b;
 
+
+
+const cnv = document.querySelector('#matter-container canvas')
+const c = cnv.getContext('2d')
+c.fillStyle = '#fff'
+c.fillRect(100, 100, 100, 100)s
     
