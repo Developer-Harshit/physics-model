@@ -2,7 +2,7 @@ class Utility {
     constructor(colorType) {
 
         this.color = this.seleteColor(colorType)
-        this.chain = []
+        this.chains = []
         // structure [{chain: object,host: body}]
 
     }

@@ -36,23 +36,30 @@ function createParticle(mymode) {
 
         }
         else if (mymode == '3') {
+            if (i > 4) break
             aBody = new Ball(
-                matterContainer.clientWidth / 2,
-                40,
+                rWidth,
+                rHeight,
                 12, rColor)
 
+            rWidth = Math.random() * matterContainer.clientWidth
+            rHeight = Math.random() * matterContainer.clientHeight
             var bBody = new Ball(
                 rWidth,
                 rHeight,
                 12, rColor)
+
+            bBody.body.collisionFilter.group = 5
             myParticles.push(bBody.body)
-            const chain = new Chain(aBody.body, bBody.body, 0.9)
+            const chain = new Chain(aBody.body, bBody.body, 0.99999)
 
             chain.createChain()
 
+            console.log('Dx', chain.dx, '\nLength', chain.length)
+
         }
         if (aBody) {
-
+            aBody.body.collisionFilter.group = 5
             myParticles.push(aBody.body)
         }
 

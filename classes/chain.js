@@ -4,11 +4,11 @@ class Joint {
         const options = {
             friction: 1,
             frictionAir: 0,
-            restitution: 1,
+            restitution: 0,
             render
         }
         this.body = Bodies.circle(x, y, r, options);
-
+        this.body.collisionFilter.group = -5
         Composite.add(engine.world, this.body);
 
     }
@@ -25,6 +25,7 @@ class Chain {
         this.length = findMag(subtractVectors(bodyA.position, bodyB.position))
         this.stiffness = stiffness
         this.dx = this.length
+        this.bodies = []
 
 
     }
@@ -33,28 +34,32 @@ class Chain {
         ////////////////
         // some advanced distrubuting algorithm
         ////////////////
-        const num = 30
-        this.dx = this.length / num
-
-
-        console.log(this.length, this.dx)
-
+        const num = Math.random() * 6 + 5
+        // this.dx = this.length / num
+        this.dx = Math.random() * 10 + 5
 
 
 
+
+
+
+        this.bodies.push(this.bodyA)
         var first = this.bodyA
+
 
         for (let i = 1; i < num; i++) {
             const x = this.bodyA.position.x + unitDist.x * i * this.dx
             const y = this.bodyA.position.y + unitDist.y * i * this.dx
 
-            const joint = new Joint(x, y, 12)
+            const joint = new Joint(x, y, 1)
             this.createConstraint(first, joint.body)
 
             first = joint.body
+            this.bodies.push(first)
 
         }
         this.createConstraint(first, this.bodyB)
+        this.bodies.push(this.bodyB)
 
 
 
@@ -63,11 +68,14 @@ class Chain {
         var options = {
             bodyA: bodyA,
             bodyB: bodyB,
+
             length: this.dx,
             stiffness: this.stiffness
         }
         var constraint = Constraint.create(options)
+        // constraint.render.visible = false
         Composite.add(engine.world, constraint)
+
     }
     distribute() {
 

@@ -22,9 +22,9 @@ const THICCNESS = 10000;
 const myParticles = []
 const scale = 0.6
 
-var blending = false
+var blending = true
 var intensity = 0.013
-var iter = 10
+var iter = 1
 var mode = '3'
 
 var ground
