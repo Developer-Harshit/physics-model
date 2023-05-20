@@ -22,7 +22,6 @@ var detector = Detector.create()
 
 
 
-
 createParticle(mode)
 
 
@@ -58,8 +57,6 @@ function draw() {
         }
 
     }
-
-
 
 
 }
