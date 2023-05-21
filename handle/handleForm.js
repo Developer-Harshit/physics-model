@@ -1,25 +1,23 @@
 
 function handleForm() {
-    const formData = Object.fromEntries([...new FormData(SettingForm).entries()])
 
-
-    if (formData.colorMode) {
+    if (blendingInput.checked) {
         blending = true
-        intensity = formData.intensity
+        intensity = intensityInput.value
     } else {
         blending = false
     }
 
-    if (parseInt(formData.count) > 0 || parseInt(formData.count) < 700 || parseInt(formData.count)) {
-        iter = parseInt(formData.count)
+    if (parseInt(countInput.value) > countInput.min && parseInt(countInput.value) < countInput.max && parseInt(countInput.value)) {
+        iter = parseInt(countInput.value)
 
     }
 
-
-
-    if (formData.mode) {
-        mode = (formData.mode)
+    if (modeSelector.value) {
+        mode = (modeSelector.value)
     }
+
+
 }
 
 function assignSetting() {
@@ -46,3 +44,11 @@ function configSim(event) {
 
 }
 configBtn.addEventListener('click', configSim)
+
+modeSelector.addEventListener('input', function () {
+    if (modeSelector.value == '3') {
+        countInput.max = 10
+    } else {
+        countInput.max = 700
+    }
+})

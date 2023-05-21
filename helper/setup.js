@@ -16,7 +16,7 @@ const SettingForm = document.querySelector('#form-div form')
 const matterContainer = document.querySelector("#matter-container");
 
 
-const modes = ['ball', 'box']
+const modes = ['ball', 'box', 'fluid', 'chain']
 const THICCNESS = 10000;
 const myParticles = []
 const myConstraints = []
@@ -24,8 +24,8 @@ const scale = 0.6
 
 var blending = true
 var intensity = 0.013
-var iter = 1
-var mode = '3'
+var iter = 100
+var mode = '1'
 
 var ground
 var leftWall
