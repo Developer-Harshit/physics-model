@@ -34,16 +34,16 @@ class Chain {
         ////////////////
         // some advanced distrubuting algorithm
         ////////////////
-        const num = Math.random() * 6 + 5
-        // this.dx = this.length / num
-        this.dx = Math.random() * 10 + 5
+        const num = 15
+        this.dx = this.length / num
+        // this.dx = Math.random() * 10 + 5
 
 
 
 
 
 
-        this.bodies.push(this.bodyA)
+        this.bodies.push(this.bodyA.position)
         var first = this.bodyA
 
 
@@ -55,11 +55,11 @@ class Chain {
             this.createConstraint(first, joint.body)
 
             first = joint.body
-            this.bodies.push(first)
+            this.bodies.push(first.position)
 
         }
         this.createConstraint(first, this.bodyB)
-        this.bodies.push(this.bodyB)
+        this.bodies.push(this.bodyB.position)
 
 
 
@@ -73,23 +73,25 @@ class Chain {
             stiffness: this.stiffness
         }
         var constraint = Constraint.create(options)
-        // constraint.render.visible = false
+        constraint.render.visible = false
         Composite.add(engine.world, constraint)
 
     }
     distribute() {
 
     }
-    draw() {
+    draw(ctx) {
+        const curvePoints = getCurvePoints(this.bodies, 0.8, 150, true)
+        for (var i = 0; i < curvePoints.length - 1; i++) {
+            drawLine(ctx, curvePoints[i], curvePoints[i + 1])
 
+        }
     }
     update() {
 
     }
     findDistUnit = function () {
         const dist = subtractVectors(this.bodyA.position, this.bodyB.position)
-
-
         const unitDist = findUnit(dist)
         return unitDist
 

@@ -19,3 +19,11 @@ function findUnit(vector) {
         y: vector.y / mag
     }
 }
+function pointToVect(x, y) {
+    return {
+        x, y
+    }
+}
+function vectToPoint(vect) {
+    return [vect.x, vect.y]
+}

@@ -16,10 +16,10 @@ const SettingForm = document.querySelector('#form-div form')
 const matterContainer = document.querySelector("#matter-container");
 
 
-
 const modes = ['ball', 'box']
 const THICCNESS = 10000;
 const myParticles = []
+const myConstraints = []
 const scale = 0.6
 
 var blending = true
@@ -31,6 +31,9 @@ var ground
 var leftWall
 var rightWall
 
+// module aliases
+
+
 
 const Engine = Matter.Engine,
     Render = Matter.Render,
@@ -39,3 +42,25 @@ const Engine = Matter.Engine,
     Detector = Matter.Detector,
     Composite = Matter.Composite,
     Constraint = Matter.Constraint;
+
+
+// create an engine
+var engine = Engine.create();
+
+// create a renderer
+var render = Render.create({
+    element: matterContainer,
+    engine: engine,
+    options: {
+        width: matterContainer.clientWidth,
+        height: matterContainer.clientHeight,
+        background: "transparent",
+        wireframes: false,
+        showAngleIndicator: false
+    }
+});
+var detector = Detector.create()
+var state = 1
+
+const cnv = document.querySelector('#matter-container canvas')
+const c = cnv.getContext('2d')

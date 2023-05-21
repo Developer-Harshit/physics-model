@@ -5,6 +5,7 @@ function createParticle(mymode) {
 
 
     myParticles.length = 0
+    myConstraints.length = 0
     Detector.clear(detector)
 
     for (let i = 0; i < iter; i++) {
@@ -51,12 +52,10 @@ function createParticle(mymode) {
 
             bBody.body.collisionFilter.group = 5
             myParticles.push(bBody.body)
-            const chain = new Chain(aBody.body, bBody.body, 0.99999)
+            var chain = new Chain(aBody.body, bBody.body, 0.99999)
 
             chain.createChain()
-
-            console.log('Dx', chain.dx, '\nLength', chain.length)
-
+            myConstraints.push(chain)
         }
         if (aBody) {
             aBody.body.collisionFilter.group = 5
@@ -66,6 +65,7 @@ function createParticle(mymode) {
     }
 
     Detector.setBodies(detector, myParticles)
+
 
 
 
