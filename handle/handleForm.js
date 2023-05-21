@@ -8,7 +8,9 @@ function handleForm() {
         blending = false
     }
 
-    if (parseInt(countInput.value) > countInput.min && parseInt(countInput.value) < countInput.max && parseInt(countInput.value)) {
+    if (parseInt(countInput.value) >= countInput.min &&
+        parseInt(countInput.value) <= countInput.max &&
+        parseInt(countInput.value)) {
         iter = parseInt(countInput.value)
 
     }

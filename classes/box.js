@@ -1,19 +1,17 @@
-class Box extends Utility {
-    constructor(x, y, w, h, colorType = 1) {
-        super(colorType)
-        const render = {
-            fillStyle: this.color,
-            strokeStyle: this.color,
-            lineWidth: 1
-        }
-        const options = {
-            friction: 0.3,
-            frictionAir: 0.00001,
-            restitution: 0, render
-        }
-        this.body = Bodies.rectangle(x, y, w, h, options);
-        this.body.color = this.color
-        Composite.add(engine.world, this.body);
+class Box extends Particle {
+    constructor(x, y, w, h, colorType, isStatic) {
+        super(
+            {
+                friction: 0.3,
+                restitution: 0,
+                isStatic
+            },
+            colorType
+        )
+
+
+        this.body = Bodies.rectangle(x, y, w, h, this.options);
+        this.addToWorld()
     }
 
 }

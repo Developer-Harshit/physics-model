@@ -25,7 +25,7 @@ const scale = 0.6
 var blending = true
 var intensity = 0.013
 var iter = 100
-var mode = '1'
+var mode = '0'
 
 var ground
 var leftWall

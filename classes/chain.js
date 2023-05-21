@@ -1,24 +1,27 @@
-class Joint {
+class Joint extends Particle {
     constructor(x, y, r) {
-        const render = { visible: false }
-        const options = {
+
+        super({
             friction: 1,
             frictionAir: 0,
             restitution: 0,
-            render
-        }
-        this.body = Bodies.circle(x, y, r, options);
+        })
+
+        this.body = Bodies.circle(x, y, r, this.options);
+
+        this.body.render.visible = false
         this.body.collisionFilter.group = -5
-        Composite.add(engine.world, this.body);
+
+        this.addToWorld()
 
     }
 
 }
 
-class Chain {
+class Chain extends Particle {
     constructor(bodyA, bodyB, stiffness) {
-        //set of constraints
-        //set of body
+        super()
+
         this.bodyA = bodyA
         this.bodyB = bodyB
 
@@ -36,12 +39,6 @@ class Chain {
         ////////////////
         const num = 15
         this.dx = this.length / num
-        // this.dx = Math.random() * 10 + 5
-
-
-
-
-
 
         this.bodies.push(this.bodyA.position)
         var first = this.bodyA
@@ -68,13 +65,12 @@ class Chain {
         var options = {
             bodyA: bodyA,
             bodyB: bodyB,
-
             length: this.dx,
-            stiffness: this.stiffness
+            stiffness: this.stiffness,
+            render: { visible: false }
         }
         var constraint = Constraint.create(options)
-        constraint.render.visible = false
-        Composite.add(engine.world, constraint)
+        this.addToWorld(constraint)
 
     }
     distribute() {
@@ -87,9 +83,7 @@ class Chain {
 
         }
     }
-    update() {
 
-    }
     findDistUnit = function () {
         const dist = subtractVectors(this.bodyA.position, this.bodyB.position)
         const unitDist = findUnit(dist)

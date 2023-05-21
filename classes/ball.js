@@ -1,21 +1,15 @@
-class Ball extends Utility {
-    constructor(x, y, r, colorType = 0, isFixed = false) {
-        super(colorType)
-        const render = {
-            fillStyle: this.color,
-            strokeStyle: this.color,
-            lineWidth: 5
-        }
-        const options = {
-            friction: 0.9,
-            frictionAir: 0.00001,
-            restitution: 0.9, isStatic: isFixed,
-            render
+class Ball extends Particle {
+    constructor(x, y, r, colorType = 0, isStatic) {
+        super(
+            {
+                friction: 0.9,
+                restitution: 0.9,
+                isStatic,
+            },
+            colorType)
 
-        }
-        this.body = Bodies.circle(x, y, r, options);
-        this.body.color = this.color
-        Composite.add(engine.world, this.body);
+        this.body = Bodies.circle(x, y, r, this.options);
+        this.addToWorld()
     }
 
 }

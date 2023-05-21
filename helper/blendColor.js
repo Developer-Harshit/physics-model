@@ -1,29 +1,10 @@
 
-/*
-blend two colors to create the color that is at the percentage away from the first color
-this is a 5 step process
-    1: validate input
-    2: convert input to 6 char hex
-    3: convert hex to rgb
-    4: take the percentage to create a ratio between the two colors
-    5: convert blend to hex
-    @param: color1      => the first color, hex (ie: #000000)
-    @param: color2      => the second color, hex (ie: #ffffff)
-    @param: percentage  => the distance from the first color, as a decimal between 0 and 1 (ie: 0.5)
-    @returns: string    => the third color, hex, represenatation of the blend between color1 and color2 at the given percentage
-    */
 
-
-function seleteColor(colorType) {
+function selectColor(colorType) {
     var cx = 130, cy = 130, cz = 130
 
     switch (colorType) {
-        // 255,0,0
-        // 0,255,0
-        // 0,0,255
-        //     cmy cm cy my
-        // rb
-        // gb 
+
         case 0:
             var cR = (Math.random())
 
@@ -90,8 +71,22 @@ function seleteColor(colorType) {
 
     }
     return rgb_to_hex(cx, cy, cz)
-    return `rgb(${cx}, ${cy}, ${cz})`
 }
+
+/*
+blend two colors to create the color that is at the percentage away from the first color
+this is a 5 step process
+    1: validate input
+    2: convert input to 6 char hex
+    3: convert hex to rgb
+    4: take the percentage to create a ratio between the two colors
+    5: convert blend to hex
+* @param: color1      => the first color, hex (ie: #000000)
+* @param: color2      => the second color, hex (ie: #ffffff)
+* @param: percentage  => the distance from the first color, as a decimal between 0 and 1 (ie: 0.5)
+* @returns: string    => the third color, hex, represenatation of the blend between color1 and color2 at the given percentage
+    */
+
 function blend_colors(color1, color2, percentage, mode = 'hex') {
     // check input
     color1 = color1 || '#000000';
