@@ -1,3 +1,5 @@
 testing/test.js
 testing/style.css
 testing/test.html
+node_modules
+curve-interpolator
