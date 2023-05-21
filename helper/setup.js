@@ -17,7 +17,7 @@ const matterContainer = document.querySelector("#matter-container");
 
 
 const modes = ['ball', 'box', 'fluid', 'chain']
-const THICCNESS = 10000;
+const THICCNESS = 100000;
 const myParticles = []
 const myConstraints = []
 const scale = 0.6

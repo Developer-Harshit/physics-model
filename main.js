@@ -18,7 +18,7 @@ function draw() {
     window.requestAnimationFrame(draw)
 
     if (state == 1) {
-
+        //takes delta in milliseconds
         Engine.update(engine)
         c.fillStyle = '#fff'
         for (const cstObj of myConstraints) {
