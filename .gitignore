@@ -3,3 +3,5 @@ testing/style.css
 testing/test.html
 node_modules
 curve-interpolator
+.vscode/settings.json
+Matter Branch.md

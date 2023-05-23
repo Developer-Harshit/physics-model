@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "uglify-js": "^3.17.4",
+    "uglifyjs": "^2.4.11"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "build": "node testing/compressFiles.js"
+  }
+}

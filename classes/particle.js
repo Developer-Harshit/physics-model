@@ -28,3 +28,5 @@ class Particle {
         }
     }
 }
+
+// helper\setup.js helper\canvasFunc.js helper\vector.js helper\calcCurve.js helper\blendColor.js classes\utility.js classes\particle.js classes\boundary.js classes\mouse.js classes\box.js classes\ball.js classes\fluid.js classes\chain.js createStuff\createBodies.js createStuff\createBorders.js handle\handleResize.js handle\handleForm.js handle\handleLoop.js main.js
