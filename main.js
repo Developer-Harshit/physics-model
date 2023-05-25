@@ -7,7 +7,6 @@ assignSetting()
 createBorders()
 
 var mouse = new Mouse()
-
 // allow scroll through the canvas
 mouse.removeListener()
 
