@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Physic Model</title>
-    <link rel="stylesheet" type="text/css" href="styles/base.css">
-    <link rel="stylesheet" type="text/css" href="styles/mobile.css">
-    <script src="libraries/matter.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/base.css" />
+    <link rel="stylesheet" type="text/css" href="styles/mobile.css" />
+    <script src="lib/matter.js"></script>
+    <script src="lib/vectorLib.js"></script>
+    <script src="lib/curveLib.js"></script>
+    <script src="lib/colorLib.js"></script>
+    <script src="lib/canvasLib.js"></script>
   </head>
-
   <body>
     <header></header>
     <main>
@@ -20,17 +22,24 @@
             <li>
               <div>
                 <label for="colorMode">ColorBlending</label>
-                <input id="colorMode" name="colorMode" type="checkbox">
+                <input id="colorMode" name="colorMode" type="checkbox" />
               </div>
               <div>
                 <label for="intensity">Blending Intensity</label>
-                <input name='intensity' id='intensity' type="range" min="0.001" max="0.2" value="0.013"
-                  step="0.0000000001">
+                <input
+                  name="intensity"
+                  id="intensity"
+                  type="range"
+                  min="0.001"
+                  max="0.2"
+                  value="0.013"
+                  step="0.0000000001"
+                />
               </div>
             </li>
             <li>
               <label for="mode">Mode</label>
-              <select name="mode" id="mode">
+              <select name="mode" id="mode" v-model="modeInput">
                 <option value="0">Ball</option>
                 <option value="1">Box</option>
                 <option value="2">Fluid</option>
@@ -40,7 +49,15 @@
             <li>
               <div>
                 <label for="count">Particle count</label>
-                <input id="count" name="count" type="range" min="1" max="700" value="20" step="1">
+                <input
+                  id="count"
+                  name="count"
+                  type="range"
+                  min="1"
+                  max="700"
+                  value="20"
+                  step="1"
+                />
               </div>
             </li>
             <!-- structure -->
@@ -48,15 +65,17 @@
               <p></p><input type="range">
             </li> -->
           </ol>
-          <button id="config-btn" class="btn ">Save and Reset</button>
+          <button @click.prevent="saveOptions" id="config-btn" class="btn">
+            Save and Reset
+          </button>
         </form>
       </div>
       <section id="main-game">
         <!-- <div id="canvas-div"></div> -->
         <div id="matter-container" class="matter-container"></div>
         <div id="button-div">
-          <button id="start-btn" class="btn ">Start</button>
-          <button id="stop-btn" class="btn">Stop</button>
+          <button id="start-btn" class="btn" data-state="1">Start</button>
+          <button id="stop-btn" class="btn" data-state="0">Stop</button>
           <button id="reset-btn" class="btn">Reset</button>
         </div>
       </section>
@@ -65,32 +84,23 @@
       <div></div>
     </footer>
 
-    
     <!-- helpers -->
-    <script src="helper/setup.js"></script>
-    <script src="helper/canvasFunc.js"></script>
-    <script src="helper/vector.js"></script>
-    <script src="helper/calcCurve.js"></script>
-    <script src="helper/blendColor.js"></script>
+    <script src="createUtils/setup.js"></script>
+
     <!-- classes -->
-    <script src="classes/utility.js"></script>
     <script src="classes/particle.js"></script>
-    <script src="classes/ball.js"></script>
-    <script src="classes/fluid.js"></script>
-    <script src="classes/box.js"></script>
+    <script src="classes/bodies.js"></script>
     <script src="classes/chain.js"></script>
-    <script src="classes/boundary.js"></script>
     <script src="classes/mouse.js"></script>
     <!-- create stuff -->
-    <script src="createStuff/createBodies.js"></script>
-    <script src="createStuff/createBorders.js"></script>
-    <!-- handler --> =
-    <script src="handle/handleResize.js"></script>
-    <script src="handle/handleForm.js"></script>
-    <script src="handle/handleLoop.js"></script>
+    <script src="createUtils/create.bodies.js"></script>
+    <script src="createUtils/create.borders.js"></script>
+    <!-- handler -->
+    =
+    <script src="handle/handle.resize.js"></script>
+    <script src="handle/handle.form.js"></script>
     <!-- main js -->
     <script src="main.js"></script>
     <!-- <script src="src/bundle.js"></script> -->
   </body>
-
 </html>
